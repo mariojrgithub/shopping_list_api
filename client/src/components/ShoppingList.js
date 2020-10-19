@@ -11,7 +11,7 @@ class ShoppingList extends Component {
   }
 
   onDeleteClick = (id, name) => {
-    if (window.confirm(`Are you sure you want to delete ${name}`)) {
+    if (window.confirm(`Are you sure you want to delete ${name}?`)) {
       this.props.deleteItem(id);
     }
   };
