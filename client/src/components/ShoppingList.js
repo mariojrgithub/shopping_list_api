@@ -10,8 +10,8 @@ class ShoppingList extends Component {
     this.props.getItems();
   }
 
-  onDeleteClick = (id) => {
-    if (window.confirm(`Are you sure you want to delete ${id}`)) {
+  onDeleteClick = (id, name) => {
+    if (window.confirm(`Are you sure you want to delete ${name}`)) {
       this.props.deleteItem(id);
     }
   };
@@ -29,7 +29,7 @@ class ShoppingList extends Component {
                     className="remove-btn"
                     color="danger"
                     size="sm"
-                    onClick={this.onDeleteClick.bind(this, _id)}
+                    onClick={this.onDeleteClick.bind(this, _id, name)}
                   >
                     &times;
                   </Button>
