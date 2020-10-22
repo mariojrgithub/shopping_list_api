@@ -22,6 +22,7 @@ class App extends Component {
           <AppNavbar />
           <Container>
             <ItemModal />
+
             <ShoppingList />
           </Container>
         </div>

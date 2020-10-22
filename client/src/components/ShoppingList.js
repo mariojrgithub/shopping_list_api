@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { getItems, deleteItem } from "../actions/itemActions";
 import PropTypes from "prop-types";
 
+import UpdateModal from "../components/UpdateModal";
+
 class ShoppingList extends Component {
   static propTypes = {
     getItems: PropTypes.func.isRequired,
@@ -31,18 +33,20 @@ class ShoppingList extends Component {
             {items.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
-                  {this.props.isAuthenticated ? (
-                    <Button
-                      className="remove-btn"
-                      color="danger"
-                      size="sm"
-                      onClick={this.onDeleteClick.bind(this, _id, name)}
-                    >
-                      &times;
-                    </Button>
-                  ) : null}
-
                   {name}
+                  {this.props.isAuthenticated ? (
+                    <div>
+                      <Button
+                        className="remove-btn"
+                        color="danger"
+                        size="sm"
+                        onClick={this.onDeleteClick.bind(this, _id, name)}
+                      >
+                        Delete
+                      </Button>
+                      <UpdateModal {...{ _id, name }} />
+                    </div>
+                  ) : null}
                 </ListGroupItem>
               </CSSTransition>
             ))}
